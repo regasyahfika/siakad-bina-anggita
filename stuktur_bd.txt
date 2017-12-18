@@ -1,0 +1,44 @@
+- user = id, email, password x
+- category = id, name, slug x
+- post = id, category_id, title, content, image x
+- comment = id, post_id, user_id, email, message x
+
+#USER
+* posting
+- judul 255 (title)
+- subjudul 100 (subtitle)
+- slug 100
+- status boolean
+- posted_by int 4
+- konten text
+- image 255
+
+* kategori
+- nama
+- slug
+
+* Tags
+- nama
+- slug
+
+* kategori_posts
+- kategori_id
+- post_id
+
+* post_tag
+- post_id
+- tag_id
+
+# ADMIN
+* admin
+- nama
+- email
+- telp
+- status
+
+* admin_roles
+- admin_id
+- role_id
+
+* role
+- nama

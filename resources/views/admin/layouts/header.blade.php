@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>L</b>B</span>
+      <span class="logo-mini"><b>S</b>I</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Lara</b>BLOG</span>
+      <span class="logo-lg"><b>SIAKAD</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

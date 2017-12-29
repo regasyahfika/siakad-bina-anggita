@@ -21,7 +21,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
 	    	<div class="box box-success">
 	            <div class="box-header with-border">
 	              <h3 class="box-title">Kategori</h3>
@@ -36,10 +36,10 @@
 	                  <label for="nama">Nama</label>
 	                  <input type="text" class="form-control" id="nama" name="nama" placeholder="Title" value="{{ old('nama') }}">
 	                </div>
-	                <div class="form-group">
+	                {{-- <div class="form-group">
 	                  <label for="slug">Slug</label>
 	                  <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ old('slug') }}">
-	                </div>
+	                </div> --}}
 	        
 				    <button type="submit" class="btn btn-success">Submit</button>
 				    <a href="{{ route('kategori.index') }}" class="btn btn-info">Back</a>

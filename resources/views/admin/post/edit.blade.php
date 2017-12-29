@@ -46,29 +46,9 @@
 						    </div>
 
 						    <div class="form-group">
-						      <label for="subjudul">Sub Judul</label>
-						      <input type="text" class="form-control" id="subjudul" name="subjudul" placeholder="SubTitle" value="{{ $post->subjudul }}">
-						    </div>
-						    <div class="form-group">
 						      <label for="slug">Slug</label>
 						      <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ $post->slug }}">
 						    </div>
-
-						    <div class="form-group" style="margin-top: 18px;">
-				                <label>Select Tag</label>
-				                <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
-				                        style="width: 100%;" name="tag[]">
-				                @foreach ($tags as $tag)
-									<option value="{{ $tag->id }}"
-									@foreach ($post->tags as $postTag)
-										@if ($postTag->id == $tag->id)
-										selected
-										@endif
-									@endforeach
-									>{{ $tag->nama }}</option>
-								@endforeach
-				                </select>
-				            </div>
 
 				            <div class="form-group" style="margin-top: 18px;">
 								<label>Kategori</label>
@@ -85,6 +65,22 @@
 								@endforeach
 								</select>
 							</div>
+
+							<div class="form-group" style="margin-top: 18px;">
+				                <label>Select Tag</label>
+				                <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
+				                        style="width: 100%;" name="tag[]">
+				                @foreach ($tags as $tag)
+									<option value="{{ $tag->id }}"
+									@foreach ($post->tags as $postTag)
+										@if ($postTag->id == $tag->id)
+										selected
+										@endif
+									@endforeach
+									>{{ $tag->nama }}</option>
+								@endforeach
+				                </select>
+				            </div>
 						</div>
 
 						<div class="col-lg-6">

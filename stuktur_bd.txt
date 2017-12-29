@@ -1,8 +1,4 @@
-- user = id, email, password x
-- category = id, name, slug x
-- post = id, category_id, title, content, image x
-- comment = id, post_id, user_id, email, message x
-
+==========BLOG=============
 #USER
 * posting
 - judul 255 (title)
@@ -42,3 +38,29 @@
 
 * role
 - nama
+
+
+=============admin==========
+
+1. data blog
+	- posting
+	- kategori
+	- tag
+
+2. data siswa
+	- data siswa
+		* nis, nama lengkap, ttl, jenis kelamin, agama, foto, pilih kelas
+	- data kelas
+		* id, nama kelas, jurusan, kelas
+	- data mata pelajaran
+
+3. data pegawai
+	- data guru
+		* nip, nama guru, jenis kelamin, password
+	- data pegawai
+
+4. jadwal pelajaran
+	- 
+
+5. galeri
+	- 

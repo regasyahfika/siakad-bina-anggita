@@ -49,12 +49,12 @@ class KategoriController extends Controller
     {
         $this->validate($request,[
             'nama' => 'required|max:50|unique:kategoris',
-            'slug' => 'required',
+            // 'slug' => 'required',
         ]);
 
         $kategori = new Kategori;
         $kategori->nama = $request->nama;
-        $kategori->slug = str_slug($request->slug);
+        // $kategori->slug = str_slug($request->slug);
         $kategori->save();
 
         return redirect(route('kategori.index'))->with('message','Tambah Data Berhasil');
@@ -95,12 +95,12 @@ class KategoriController extends Controller
     {
         $this->validate($request,[
             'nama' => 'required',
-            'slug' => 'required',
+            // 'slug' => 'required',
         ]);
 
         $kategori = Kategori::find($id);
         $kategori->nama = $request->nama;
-        $kategori->slug = str_slug($request->slug);
+        // $kategori->slug = str_slug($request->slug);
         $kategori->save();
 
         return redirect(route('kategori.index'))->with('message','Ubah Data Berhasil');

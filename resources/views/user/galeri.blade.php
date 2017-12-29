@@ -21,16 +21,19 @@
           </div>
     </div>
     <div class="row">
-    	<div class="col-md-4 col-sm-6 galeri-item">
-            <a class="galeri-link" data-toggle="modal" href="{{ asset('image/skaba.jpg') }}" data-fancybox="group1" data-caption="My caption">
+        @foreach ($gm as $post)
+      <div class="col-md-4 col-sm-6 galeri-item">
+            <a class="galeri-link" data-toggle="modal" href="{{ $post->image_url }}" data-fancybox="group1" data-caption="My caption">
               <div class="galeri-hover">
                 <div class="galeri-hover-content">
                   <i class="fa fa-eye fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="{{ asset('image/skaba.jpg') }}" alt="">
+              <img class="img-fluid" src="{{ $post->image_url }}" alt="">
             </a>
+          
         </div>
+        @endforeach
 		
         <div class="col-md-4 col-sm-6 galeri-item">
             <a class="galeri-link" data-toggle="modal" href="{{ asset('image/skaba.jpg') }}" data-fancybox="group1" data-caption="My caption">

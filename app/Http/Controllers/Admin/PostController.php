@@ -54,10 +54,9 @@ class PostController extends Controller
     {
         $this->validate($request,[
             'judul' => 'required',
-            'subjudul' => 'required',
+            // 'subjudul' => 'required',
             'slug' => 'required',
             'konten' => 'required',
-            'image' => 'required',
         ]);
 
         // if ($request->hasFile('image')) {
@@ -69,7 +68,7 @@ class PostController extends Controller
         $post = new Posting;
         $post->judul = $request->judul;
         // $post->image = $imageName;
-        $post->subjudul = $request->subjudul;
+        // $post->subjudul = $request->subjudul;
         $post->slug = str_slug($request->slug);
         $post->status = $request->status;
         $post->konten = $request->konten;
@@ -127,7 +126,6 @@ class PostController extends Controller
     {
         $this->validate($request,[
             'judul' => 'required',
-            'subjudul' => 'required',
             'slug' => 'required',
             'konten' => 'required',
         ]);
@@ -137,7 +135,6 @@ class PostController extends Controller
         $post = Posting::find($id);
         // $post->image = $imageName;
         $post->judul = $request->judul;
-        $post->subjudul = $request->subjudul;
         $post->slug = str_slug($request->slug);
         $post->status = $request->status;
         $post->konten = $request->konten;

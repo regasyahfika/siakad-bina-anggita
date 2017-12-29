@@ -45,13 +45,23 @@
 									<input type="text" class="form-control" id="judul" name="judul" placeholder="Title" value="{{ old('judul') }}">
 								</div>
 
-								<div class="form-group">
+								{{-- <div class="form-group">
 									<label for="subjudul">Sub Judul</label>
 									<input type="text" class="form-control" id="subjudul" name="subjudul" placeholder="SubTitle" value="{{ old('subjudul') }}">
-								</div>
+								</div> --}}
 								<div class="form-group">
 									<label for="slug">Slug</label>
 									<input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ old('slug') }}">
+								</div>
+
+								<div class="form-group" style="margin-top: 18px;">
+									<label>Kategori</label>
+									<select class="form-control select2" style="width: 100%;" name="kategori">
+										<option disabled="disabled" selected="selected">--- Select Kategori ---</option>
+									@foreach ($kategori as $kate)
+										<option value="{{ $kate->id }}">{{ $kate->nama }}</option>
+									@endforeach
+									</select>
 								</div>
 							</div>
 
@@ -78,15 +88,6 @@
 									style="width: 100%;" name="tag[]">
 									@foreach ($tags as $tag)
 										<option value="{{ $tag->id }}">{{ $tag->nama }}</option>
-									@endforeach
-									</select>
-								</div>
-								<div class="form-group" style="margin-top: 18px;">
-									<label>Kategori</label>
-									<select class="form-control select2" style="width: 100%;" name="kategori">
-										<option disabled="disabled" selected="selected">--- Select Kategori ---</option>
-									@foreach ($kategori as $kate)
-										<option value="{{ $kate->id }}">{{ $kate->nama }}</option>
 									@endforeach
 									</select>
 								</div>

@@ -15,13 +15,11 @@ class CreatePostingsTable extends Migration
     {
         Schema::create('postings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('judul',255);
-            $table->string('subjudul',100);
+            $table->string('judul',100);
             $table->string('slug',100);
             $table->text('konten');
             $table->boolean('status')->nullable();
-            $table->integer('posted_by')->nullable();
-            $table->string('image',255)->nullable();
+            $table->string('image',50)->nullable();
             $table->timestamps();
         });
     }

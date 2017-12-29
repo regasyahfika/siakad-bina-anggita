@@ -24,8 +24,9 @@
 
     <!-- Main content -->
     <section class="content">
-
-     <div class="box box-success">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box box-success">
             <div class="box-header">
               <h3 class="box-title">Data Kategori</h3>
             </div>
@@ -37,7 +38,7 @@
                 <tr>
                   <th>No</th>
                   <th>Nama</th>
-                  <th>Slug</th>
+                  {{-- <th>Slug</th> --}}
                   <th style="text-align: center;">Action</th>
                 </tr>
                 </thead>
@@ -46,14 +47,14 @@
                   <tr>
                     <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $kate->nama }}</td>
-                    <td>{{ $kate->slug }}</td>
+                    {{-- <td>{{ $kate->slug }}</td> --}}
                     <td style="text-align: center;">
-                      <a href="{{ route('kategori.edit', $kate->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                      <a href="{{ route('kategori.edit', $kate->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
 
                       <form action="{{ route('kategori.destroy',$kate->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Kamu yakin ingin menghapus?')">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                        <button class="btn btn-danger"><i class="fa fa-trash"></i></a></button>
                       </form>
                     </td>
                   </tr>
@@ -66,7 +67,8 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-
+        </div>
+      </div>
     </section>
     <!-- /.content -->
   </div>

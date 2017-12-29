@@ -42,9 +42,6 @@
                   <h4><dt>Judul</dt></h4>
                   <dd>{{ $post->judul }}</dd><br>
 
-                  <h4><dt>Sub Judul</dt></h4>
-                  <dd>{{ $post->subjudul }}</dd><br>
-
                   <h4><dt>Slug</dt></h4>
                   <dd>{{ $post->slug }}</dd><br>
 

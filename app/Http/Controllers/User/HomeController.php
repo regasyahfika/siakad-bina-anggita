@@ -12,8 +12,8 @@ class HomeController extends Controller
 {
 	public function index()
     {
-        $artikel = Kategori::find(1)->posts()->where('status',1)->orderBy('created_at','desc')->paginate(4);
-    	$berita = Kategori::find(2)->posts()->where('status',1)->orderBy('created_at','desc')->paginate(4);
+        $artikel = Kategori::find(1)->posts()->where('status',1)->orderBy('created_at','desc')->paginate(5);
+    	$berita = Kategori::find(2)->posts()->where('status',1)->orderBy('created_at','desc')->paginate(5);
     	// $posting = Posting::where('status', 1)->orderBy('created_at','desc')->paginate(3);
     	// $kategori = Kategori::all();
     	return view('user.blog', compact('artikel','berita'));

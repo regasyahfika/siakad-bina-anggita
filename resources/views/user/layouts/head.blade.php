@@ -17,6 +17,6 @@
 
     <!-- Custom styles for this template -->
 	<link rel="icon" href="{{ asset('image/favicon1.ico') }}" type="image/x-icon">
-    <link href="{{ asset('user/css/agency.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
 
 

@@ -24,8 +24,9 @@
 
     <!-- Main content -->
     <section class="content">
-
-     <div class="box box-success">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box box-success">
             <div class="box-header">
               <h3 class="box-title">Data Tag</h3>
             </div>
@@ -35,9 +36,9 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>No</th>
+                  <th style="width: 10px">No</th>
                   <th>Nama</th>
-                  <th>Slug</th>
+                  {{-- <th>Slug</th> --}}
                   <th style="text-align: center;">Action</th>
                 </tr>
                 </thead>
@@ -46,13 +47,13 @@
                   <tr>
                     <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $tag->nama }}</td>
-                    <td>{{ $tag->slug }}</td>
+                    {{-- <td>{{ $tag->slug }}</td> --}}
                     <td style="text-align: center;">
-                      <a href="{{ route('tag.edit', $tag->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                      <a href="{{ route('tag.edit', $tag->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i> </a>
                       <form action="{{ route('tag.destroy',$tag->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Kamu yakin ingin menghapus?')">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                        <button class="btn btn-danger"><i class="fa fa-trash"></i></a>
                       </form>
                     </td>
                   </tr>
@@ -66,7 +67,8 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-
+        </div>
+      </div>
     </section>
     <!-- /.content -->
   </div>

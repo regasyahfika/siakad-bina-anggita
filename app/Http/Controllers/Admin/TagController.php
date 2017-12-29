@@ -51,12 +51,11 @@ class TagController extends Controller
     {
         $this->validate($request,[
             'nama' => 'required',
-            'slug' => 'required',
         ]);
 
         $tag = new Tag;
         $tag->nama = $request->nama;
-        $tag->slug = str_slug($request->slug);
+        // $tag->slug = str_slug($request->slug);
         $tag->save();
 
         return redirect(route('tag.index'))->with('message','Tambah Data Berhasil');
@@ -96,12 +95,12 @@ class TagController extends Controller
     {
         $this->validate($request,[
             'nama' => 'required',
-            'slug' => 'required',
+            // 'slug' => 'required',
         ]);
 
         $tag = Tag::find($id);
         $tag->nama = $request->nama;
-        $tag->slug = str_slug($request->slug);
+        // $tag->slug = str_slug($request->slug);
         $tag->save();
 
         return redirect(route('tag.index'))->with('message','Ubah Data Berhasil');

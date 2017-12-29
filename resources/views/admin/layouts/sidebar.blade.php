@@ -8,7 +8,7 @@
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="#"><i class="fa fa-circle"></i> Online</a>
         </div>
       </div> --}}
       <!-- search form -->
@@ -28,13 +28,13 @@
         @if (!empty($halaman)&& $halaman == 'home')
           <li class="active">
             <a href="{{ route('admin.home') }}">
-              <i class="fa fa-home text-primary"></i> <span>Home</span>
+              <i class="fa fa-home"></i> <span>Home</span>
             </a>
           </li>
         @else
           <li>
             <a href="{{ route('admin.home') }}">
-              <i class="fa fa-home text-primary"></i> <span>Home</span>
+              <i class="fa fa-home"></i> <span>Home</span>
             </a>
           </li>
         @endif
@@ -43,7 +43,7 @@
       @if(!empty($halaman) && $halaman == 'kategori' || $halaman == 'post' || $halaman == 'tag')
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-table"></i> <span>Master</span>
+            <i class="fa fa-table"></i> <span>Master Blog</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -77,7 +77,7 @@
       @else
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-table"></i> <span>Master</span>
+            <i class="fa fa-table"></i> <span>Master Blog</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -92,12 +92,13 @@
       @endif
       <!-- stop active menu  -->
         @if (!empty($halaman)&& $halaman == 'user')
-          <li class="active"><a href="{{ route('user.index') }}"><i class="fa fa-user text-success"></i> <span>User</span></a></li>
+          <li class="active"><a href="{{ route('user.index') }}"><i class="fa fa-user"></i> <span>User</span></a></li>
         @else
-          <li><a href="{{ route('user.index') }}"><i class="fa fa-user text-success"></i> <span>User</span></a></li>
+          <li><a href="{{ route('user.index') }}"><i class="fa fa-user"></i> <span>User</span></a></li>
         @endif
 
-        <li><a href="{{ url('/') }}"><i class="fa fa-globe text-primary"></i> <span>Blog</span></a></li>
+        <li><a href="{{ url('/') }}"><i class="fa fa-globe"></i> <span>Blog</span></a></li>
+        <li><a href="{{ url('/') }}"><i class="fa fa-globe"></i> <span>Guru</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

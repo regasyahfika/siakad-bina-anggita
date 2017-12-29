@@ -38,12 +38,11 @@
                 <tr>
                   <th>No</th>
                   <th>Judul</th>
-                  <th>Sub Judul</th>
                   <th>Slug</th>
                   {{-- <th style="width: 20%">Konten</th> --}}
-                  <th style="text-align: center;">Gambar</th>
-                  <th>Created At</th>
-                  <th style="text-align: center;">Action</th>
+                  {{-- <th style="text-align: center;">Gambar</th> --}}
+                  <th>Dibuat Tanggal</th>
+                  <th style="text-align: center; width: 20%;">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,20 +50,19 @@
                   <tr>
                     <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $post->judul }}</td>
-                    <td>{{ $post->subjudul }}</td>
                     <td>{{ $post->slug }}</td>
                     {{-- <td style="text-align: center; width: 15%"><img src="{{ asset('image/'. $post->image) }}" alt="" style="width: 25%;height: 15%"></td> --}}
-                    <td style="text-align: center; width: 15%"><img src="{{ $post->image_url }}" alt="" style="width: 25%;height: 15%"></td>
-                    <td>{{ $post->created_at }}</td>
+                    {{-- <td style="text-align: center; width: 15%"><img src="{{ $post->image_url }}" alt="" style="width: 25%;height: 15%"></td> --}}
+                    <td>{{ $post->created_at->format('d F Y') }}</td>
                     <td style="text-align: center;">
-                      <a href="{{ route('post.show', $post->id) }}" class="btn btn-success"><i class="fa fa-eye"></i> View</a>
+                      <a href="{{ route('post.show', $post->id) }}" class="btn btn-success"><i class="fa fa-eye"></i></a>
                       
-                      <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                      <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
 
                       <form action="{{ route('post.destroy',$post->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Kamu yakin ingin menghapus?')">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                      <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                      <button class="btn btn-danger"><i class="fa fa-trash"></i></a>
                       </form>
                     </td>
                   </tr>

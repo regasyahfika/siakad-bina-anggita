@@ -28,14 +28,17 @@ class KategoriController extends Controller
 
     public function tag(Tag $tag)
     {
-        $posts = $tag->posts();
-        return view('user.kategori',compact('posts'));
+        $posts = $tag->posts()->where('status',1)->orderBy('created_at','desc')->paginate(4);
+        $kategori = Kategori::all();
+        $tags = Tag::all();
+        return view('user.kategori',compact('posts','kategori','tags'));
     }
 
     public function kategori(Kategori $kategori)
     {
-        $posts = $kategori->posts()->where('status',1)->orderBy('created_at','desc')->paginate(4);
+        $posts = $kategori->posts()->where('status',1)->orderBy('created_at','desc')->paginate(2);
         $kategori = Kategori::all();
-        return view('user.kategori',compact('posts','kategori'));
+        $tags = Tag::all();
+        return view('user.kategori',compact('posts','kategori','tags'));
     }
 }

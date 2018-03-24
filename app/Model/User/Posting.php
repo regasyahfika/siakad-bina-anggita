@@ -6,15 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Posting extends Model
 {
+	protected $table = 'posting';
 
-	public function tags()
-	{
-		return $this->belongsToMany('App\Model\User\Tag','post_tags')->withTimestamps();
-	}
+	protected $fillable = ['judul', 'slug', 'konten', 'status', 'image', 'kategori_id'];
+
+	protected $primaryKey = 'id_posting';
+
 
 	public function kategori()
 	{
-		return $this->belongsToMany('App\Model\User\Kategori','kategori_posts')->withTimestamps();
+		return $this->belongsTo('App\Model\User\Kategori','kategori_id', 'id_kategori');
 	}
 
 	public function getRouteKeyName()
@@ -24,6 +25,6 @@ class Posting extends Model
 
 	public function getImageUrlAttribute()
 	{
-		return asset('storage/gambar/'. $this->image);
+		return asset('storage/blog/'. $this->image);
 	}
 }

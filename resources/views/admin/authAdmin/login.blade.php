@@ -10,7 +10,8 @@
 
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ url('/') }}"><b>Login Admin</b></a>
+    <img src="{{ asset('image/bina.png') }}" alt=""><br>
+    <a href="{{ url('/') }}"><b> Sekolah Khusus Autis Bina Anggita</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -37,20 +38,12 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        {{-- <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-            </label>
-          </div>
-        </div> --}}
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat"><span class="fa fa-sign-in"></span> Login</button>
+        <div class="col-xs-8">
+          <a href="{{ route('admin.password.request') }}" class="btn btn-danger"><span class="fa fa-eye-slash"></span> Lupa Password</a>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <a href="{{ route('admin.password.request') }}" class="btn btn-danger"><span class="fa fa-eye-slash"></span> Lupa Password</a>
+          <button type="submit" class="btn btn-primary btn-block btn-flat"><span class="fa fa-sign-in"></span> Login</button>
         </div>
         <!-- /.col -->
       </div>
@@ -65,13 +58,16 @@
         </div>
       </div> --}}
     </form>
-
-    
-
   </div>
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+
+<div class="login-box">
+  <div class="login-logo" style="font-size: 15px; color: #fff;">
+    <p><strong>Copyright &copy; 2018<br> SKABA - Sekolah Khusus Autis Bina Anggita.</strong></p>
+  </div>
+</div>
 @endsection
 
 @section('footer')

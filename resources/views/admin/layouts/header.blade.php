@@ -1,6 +1,6 @@
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{{ route('admin.home') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>S</b>I</span>
       <!-- logo for regular state and mobile devices -->
@@ -20,28 +20,35 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{ Auth::user()->name }}</span>
+              <img src="{{ asset('image/bina.png') }}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{ Auth::user()->username }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
-              <li class="user-header">
+              {{-- <li class="user-header">
                 <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                 <p>
-                  {{ Auth::user()->name }}
+                  {{ Auth::user()->username }}
                   <small>Admin since 1945</small>
                 </p>
-              </li>
+              </li> --}}
    
               <!-- Menu Footer-->
               <li class="user-footer">
+                <div class="pull-left">
+                  <a href="{{ route('profil.index') }}" class="btn btn-default btn-flat">Profil</a>
+                </div>
                 <div class="pull-right">
-                  <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Logout</a>
                 </div>
               </li>
-            </ul>
+
+            {{-- </ul> --}}
           </li>
+
+          {{-- <li><a href="{{ route('admin.logout') }}" class="btn btn-sucess">Logout</a></li> --}}
+                  
           <!-- Control Sidebar Toggle Button -->
         </ul>
       </div>

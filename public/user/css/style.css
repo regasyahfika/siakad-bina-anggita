@@ -26,8 +26,14 @@ body{
 
 p{
 	line-height: 1.50;
-	font-size: 14px;
+	font-size: 13px;
 	/*padding-bottom: 1px;*/
+}
+
+hr{
+	width: 100px;
+	height: 0;
+	background: #2dc788;
 }
 
 a{
@@ -767,14 +773,19 @@ section#contact :-ms-input-placeholder{
 	font-family:Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif
 }
 
+section#contact label{
+	font-size: 13px;
+}
+
 footer{
 	padding:20px 0;
 	text-align:center;
 	background: #1a1a1a;
+
 }
 
 footer span.copyright{
-	font-size:90%;
+	font-size:13px;
 	line-height:40px;
 	text-transform:none;
 	color: #fff;
@@ -818,6 +829,6 @@ ul.social-buttons li a:active,ul.social-buttons li a:focus,ul.social-buttons li 
 }
 
 #map {
-	height: 400px;
+	height: 300px;
 	width: 100%;
 }

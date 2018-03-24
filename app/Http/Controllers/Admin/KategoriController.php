@@ -26,7 +26,7 @@ class KategoriController extends Controller
     public function index()
     {
         $kategori = Kategori::all();
-        return view('admin.kategori.show', compact('kategori'));
+        return view('admin.kategori.index', compact('kategori'));
     }
 
     /**
@@ -36,7 +36,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('admin.kategori.kategori');
+        return view('admin.kategori.create');
     }
 
     /**
@@ -48,14 +48,16 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nama' => 'required|max:50|unique:kategoris',
+            'nama' => 'required|max:50|unique:kategori',
             // 'slug' => 'required',
         ]);
 
-        $kategori = new Kategori;
-        $kategori->nama = $request->nama;
+        Kategori::create($request->all());
+
+        // $kategori = new Kategori;
+        // $kategori->nama = $request->nama;
         // $kategori->slug = str_slug($request->slug);
-        $kategori->save();
+        // $kategori->save();
 
         return redirect(route('kategori.index'))->with('message','Tambah Data Berhasil');
     }
@@ -80,7 +82,7 @@ class KategoriController extends Controller
     public function edit($id)
     {
         // $kate = Kategori::where('id', $id)->first();
-        $kate = Kategori::findOrFail($id);
+        $kate = Kategori::find($id);
         return view('admin.kategori.edit', compact('kate'));
     }
 
@@ -99,9 +101,12 @@ class KategoriController extends Controller
         ]);
 
         $kategori = Kategori::find($id);
-        $kategori->nama = $request->nama;
+        $kategori->update($request->all());
+
+        // $kategori = Kategori::find($id);
+        // $kategori->nama = $request->nama;
         // $kategori->slug = str_slug($request->slug);
-        $kategori->save();
+        // $kategori->save();
 
         return redirect(route('kategori.index'))->with('message','Ubah Data Berhasil');
     }
@@ -114,7 +119,7 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        Kategori::where('id', $id)->delete();
+        Kategori::where('id_kategori', $id)->delete();
 
         return redirect()->back();
     }

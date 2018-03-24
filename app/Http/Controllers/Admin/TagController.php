@@ -26,7 +26,7 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        return view('admin.tag.show', compact('tags'));
+        return view('admin.tag.index', compact('tags'));
         
 
     }
@@ -38,7 +38,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.tag.tag');
+        return view('admin.tag.create');
     }
 
     /**
@@ -50,13 +50,15 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nama' => 'required',
+            'nama' => 'required|max:10|unique:tag',
         ]);
 
-        $tag = new Tag;
-        $tag->nama = $request->nama;
-        // $tag->slug = str_slug($request->slug);
+        $tag = Tag::create($request->all());
         $tag->save();
+        // $tag = new Tag;
+        // $tag->nama = $request->nama;
+        // $tag->slug = str_slug($request->slug);
+        // $tag->save();
 
         return redirect(route('tag.index'))->with('message','Tambah Data Berhasil');
     }
@@ -80,7 +82,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tag = Tag::where('id', $id)->first();
+        // $tag = Tag::where('id', $id)->first();
+        $tag = Tag::find($id);
         return view('admin.tag.edit', compact('tag'));
     }
 
@@ -114,7 +117,7 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        Tag::where('id', $id)->delete();
+        Tag::where('id_tag', $id)->delete();
 
         return redirect()->back();
     }

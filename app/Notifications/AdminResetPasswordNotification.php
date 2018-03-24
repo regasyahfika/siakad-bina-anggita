@@ -43,9 +43,9 @@ class AdminResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('You are receiving this email because web received a password reset request for your account.')
+                    ->line('Anda menerima email ini karena web menerima permintaan reset password untuk account Anda.')
                     ->action('Reset Password', route('admin.password.reset', $this->token))
-                    ->line('Thank you for using our application!');
+                    ->line('Terima kasih untuk menggunakan aplikasi ini!');
     }
 
     /**

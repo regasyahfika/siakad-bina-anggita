@@ -55,6 +55,26 @@ return [
             'driver' => 'token',
             'provider' => 'admins',
         ],
+
+        'guru' => [
+            'driver' => 'session',
+            'provider' => 'gurus',
+        ],
+
+        'api-gurus' => [
+            'driver' => 'token',
+            'provider' => 'gurus',
+        ],
+
+        'walimurid' => [
+            'driver' => 'session',
+            'provider' => 'walimurids',
+        ],
+
+        'api-walimurids' => [
+            'driver' => 'token',
+            'provider' => 'walimurids',
+        ],
     ],
 
     /*
@@ -83,6 +103,16 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Model\Admin\Admin::class,
+        ],
+
+        'gurus' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\User\Guru::class,
+        ],
+
+        'walimurids' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\Admin\WaliMurid::class,
         ],
 
         // 'users' => [
@@ -115,7 +145,12 @@ return [
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
-            'expire' => 15,
+            'expire' => 60,
+        ],
+        'gurus' => [
+            'provider' => 'gurus',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
 

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Form Kategori')
+@section('title', 'Kategori')
 
 @section('main-content')
 
@@ -9,12 +9,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Form Kategori
+        Edit Kategori
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">Editors</li>
+        <li><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li><a href="{{ route('kategori.index') }}"></a>Kategori</li>
+        <li class="active">Edit</li>
       </ol>
     </section>
 
@@ -29,13 +29,13 @@
 	            <!-- /.box-header -->
 	            @include('includes.messages')
 	            <!-- form start -->
-	            <form role="form" action="{{ route('kategori.update', $kate->id) }}" method="post">
+	            <form role="form" action="{{ route('kategori.update', $kate->id_kategori) }}" method="post">
 	            {{ csrf_field() }}
 	            {{ method_field('PATCH') }}
 	              <div class="box-body">
 	                <div class="form-group">
 	                  <label for="nama">Nama</label>
-	                  <input type="text" class="form-control" id="nama" name="nama" placeholder="Title" value="{{ $kate->nama }}">
+	                  <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama" value="{{ $kate->nama }}">
 	                </div>
 	                {{-- <div class="form-group">
 	                  <label for="slug">Slug</label>

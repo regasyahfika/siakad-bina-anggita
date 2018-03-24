@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\User\Kategori;
 use App\Model\User\Posting;
-use App\Model\User\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Input;
 
 class PostController extends Controller
 {
-      /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -29,7 +30,7 @@ class PostController extends Controller
     {
         $posts = Posting::all();
         
-        return view('admin.post.show', compact('posts'));
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
@@ -39,9 +40,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $tags = Tag::all();
         $kategori = Kategori::all();
-        return view('admin.post.post', compact('tags','kategori'));
+        return view('admin.post.create', compact('tags','kategori'));
     }
 
     /**
@@ -54,33 +54,36 @@ class PostController extends Controller
     {
         $this->validate($request,[
             'judul' => 'required',
-            // 'subjudul' => 'required',
             'slug' => 'required',
             'konten' => 'required',
+            'kategori_id' => 'required',
         ]);
-
-        // if ($request->hasFile('image')) {
-        //     $imageName = $request->image->store('public/gambar');
-            
-        // }
 
 
         $post = new Posting;
         $post->judul = $request->judul;
         // $post->image = $imageName;
-        // $post->subjudul = $request->subjudul;
         $post->slug = str_slug($request->slug);
         $post->status = $request->status;
         $post->konten = $request->konten;
+        $post->kategori_id = $request->kategori_id;
+        // $post->kategori_id = Input::get('kategori_id');
+        $post->save();    
+        // $file = $request->file('image');
+        // $fileName = $file->getClientOriginalName();
+        // $request->file('image')->storeAs('public/gambar', $fileName);
+        // $post->image = $fileName;
 
-        $file = $request->file('image');
-        $fileName = $file->getClientOriginalName();
-        $request->file('image')->storeAs('public/gambar', $fileName);
-        $post->image = $fileName;
+        if ($request->hasFile('image')) {
+            // $imageName = $request->image->store('public/gambar');
+            $file = $request->file('image');
+            $fileName = 'blog'.'-'.$post->id_posting.'.'. $file->getClientOriginalExtension();
+            $post->image = $fileName;
+            $file->storeAs('public/blog', $fileName);
+        }
 
         $post->save();
-        $post->tags()->sync($request->tag);
-        $post->kategori()->sync($request->kategori);
+
 
         return redirect(route('post.index'))->with('message','Tambah Data Berhasil');
     }
@@ -94,10 +97,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Posting::with('tags','kategori')->where('id', $id)->first();
-        $tags = Tag::all();
+        $post = Posting::find($id);
         $kategori = Kategori::all();
-        return view('admin.post.view', compact('post','tags','kategori'));
+        return view('admin.post.show', compact('post','tags','kategori'));
 
     }
 
@@ -109,8 +111,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Posting::with('tags','kategori')->where('id', $id)->first();
-        $tags = Tag::all();
+        // $post = Posting::with('tags','kategori')->where('id_posting', $id)->first();
+        $post = Posting::find($id);
         $kategori = Kategori::all();
         return view('admin.post.edit', compact('post','tags','kategori'));
     }
@@ -128,6 +130,7 @@ class PostController extends Controller
             'judul' => 'required',
             'slug' => 'required',
             'konten' => 'required',
+            'kategori_id' => 'required',
         ]);
 
 
@@ -138,13 +141,14 @@ class PostController extends Controller
         $post->slug = str_slug($request->slug);
         $post->status = $request->status;
         $post->konten = $request->konten;
+        $post->kategori_id = $request->kategori_id;
 
         if ($request->hasFile('image')) {
             // $imageName = $request->image->store('public/gambar');
             $file = $request->file('image');
             $fileName = 'blog'.'-'.$id.'.'. $file->getClientOriginalExtension();
             $post->image = $fileName;
-            $file->storeAs('public/gambar', $fileName);
+            $file->storeAs('public/blog', $fileName);
         }
 
         // $file = $request->file('image');
@@ -152,8 +156,8 @@ class PostController extends Controller
         // $request->file('image')->storeAs('public/gambar', $fileName);
         // $post->image = $fileName;
         
-        $post->tags()->sync($request->tag);
-        $post->kategori()->sync($request->kategori);
+        // $post->tags()->attach($request->input('tag'));
+        // $post->kategori()->sync($request->kategori);
         $post->save();
 
         return redirect(route('post.index'))->with('message','Ubah Data Berhasil');
@@ -169,8 +173,15 @@ class PostController extends Controller
     {
         // $del = Posting::find($id);
         // $del->delete();
-        Posting::where('id', $id)->delete();
 
-        return redirect()->back();
+        $del = Posting::find($id);
+        if (!empty($del->image)) {
+            Storage::delete('public/blog/'. $del->image); 
+            $del->delete();
+        }else{
+            $del->delete();
+        }
+
+        return redirect()->back()->with('message', 'Berhasil Menghapus Data');
     }
 }

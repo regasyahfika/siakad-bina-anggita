@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-lg-6">
         <p>
-        <h6 class="section-heading" style="text-align: left;">Media Sosial</h6>
+        {{-- <h6 class="section-heading" style="text-align: left;">Media Sosial</h6> --}}
         <ul class="list-inline social-buttons">
           <li class="list-inline-item">
             <a href="http://www.twitter.com/binanggita">
@@ -32,14 +32,13 @@
         </p>
 
         <p>
-          <h6 class="section-heading" style="text-align: left;">Bina Anggita Yogyakarta</h6>
           <ul class="list-inline social-buttons text-muted">
             <li class="list-inline-item">
               <a href="#">
                 <i class="fa fa-phone"></i>
               </a>
             </li>
-            (0274) 4534455 / 08122728856
+            <label>(0274) 4534455 / 08122728856</label>
           </ul>
         
           <ul class="list-inline social-buttons text-muted">
@@ -48,7 +47,7 @@
                 <i class="fa fa-envelope"></i>
               </a>
             </li>
-            binaanggita@ymail.com
+            <label>binaanggita@ymail.com</label>
           </ul>
 
           <ul class="list-inline social-buttons text-muted">
@@ -57,7 +56,7 @@
                 <i class="fa fa-map-marker"></i>
               </a>
             </li>
-            Kanoman, Tegalpasar, Banguntapan, Bantul, Yogyakarta 55198
+            <label>Jl. Kanoman, Tegalpasar, Banguntapan, <br> Bantul, Yogyakarta 55198</label>
           </ul>
         </p>
 

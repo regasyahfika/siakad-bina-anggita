@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Larablog | Guru')
+@section('title', 'Guru')
 
 @section('head')
-  <link rel="stylesheet" href="{{ asset('adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
 @endsection
 
 @section('main-content')
@@ -12,85 +12,77 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tabel Guru
-        <small>it all starts here</small>
+        Detail Guru
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li><a href="{{ route('guru.index') }}">Guru</a></li>
+        <li class="active">Detail</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-
-     <div class="box box-success">
-            <div class="box-header">
-              <h3 class="box-title">Data Guru</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box">
+            <div class="box-body box-profile" style="float: left;">
+              <img class="profile-user-img img-responsive img-thumbnail" src="{{ $guru->foto_url }}" alt="User profile picture">
             </div>
-              @include('includes.messages')
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+            <div class="box-body box-success">
+              <table class="table table-bordered">
                 <tr>
-                  <th>No</th>
-                  <th>NIP</th>
-                  <th>Nama</th>
-                  <th>Foto</th>
-                  <th style="text-align: center;">Action</th>
+                  <td><b>Nama</b></td>
+                  <td>{{ $guru->nama }}</td>
                 </tr>
-                </thead>
-                <tbody>
-                 @foreach ($guru as $gr)
-                  <tr>
-                    <td>{{ $loop->index + 1 }}</td>
-                    <td>{{ $gr->nip }}</td>
-                    <td>{{ $gr->nama }}</td>
-                    <td style="text-align: center; width: 15%"><img src="{{ $gr->image_url }}" alt="" style="width: 25%;height: 15%"></td>
-                    <td style="text-align: center;">
-                      <a href="{{ route('guru.edit', $gr->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
-
-                      <form action="{{ route('guru.destroy',$gr->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Kamu yakin ingin menghapus?')">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                      </form>
-                    </td>
-                  </tr>
-                    
-                  @endforeach
-              </tbody>
+                <tr>
+                  <td><b>NIP</b></td>
+                  <td>{{ $guru->nip }}</td>
+                </tr>
+                <tr>
+                  <td><b>Jenis Kelamin</b></td>
+                  <td>{{ $guru->jenis_kelamin == 'L' ? 'Laki-Laki' : 'Perempuan' }}</td>
+                </tr>
+                <tr>
+                  <td><b>Agama</b></td>
+                  <td>{{ $guru->agama }}</td>
+                </tr>
+                <tr>
+                  <td><b>Nomer Handphone</b></td>
+                  <td>{{ $guru->notelp }}</td>
+                </tr>
+                <tr>
+                  <td><b>Tempat Lahir</b></td>
+                  <td>{{ $guru->tempat_lahir }}</td>
+                </tr>
+                <tr>
+                  <td><b>Tanggal Lahir</b></td>
+                  <td>{{ date('d F Y', strtotime($guru->tanggal_lahir))  }}</td>
+                </tr>
+                <tr>
+                  <td><b>Pendidikan</b></td>
+                  <td>{{ $guru->pendidikan }}</td>
+                </tr>
+                <tr>
+                  <td><b>jabatan</b></td>
+                  <td>{{ $guru->jabatan }}</td>
+                </tr>
+                <tr>
+                  <td><b>Alamat</b></td>
+                  <td>{{ $guru->alamat }}</td>
+                </tr>
+                
+                
               </table>
-              <a href="{{ route('kategori.create') }}" class="btn btn-success"><i class="fa fa-pencil"></i> Tambah</a>
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
+            <div class="box-footer">
+              <a href="{{ route('guru.index') }}" class="btn btn-sm btn-primary"> Kembali</a>
+            </div>
+        </div>
+      </div>
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-@endsection
-
-@section('footer')
-  <script src="{{ asset('adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-
-  <script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-</script>
 
 @endsection

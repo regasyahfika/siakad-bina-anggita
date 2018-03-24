@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Model\Admin\Absensi;
 use App\Model\Admin\Admin;
+use App\Model\Admin\Siswa;
+use App\Model\User\Guru;
 use App\Model\User\Posting;
-use App\Model\User\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,11 +29,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+    	return view('admin.home');
+    }
 
-        $user = User::all();
+    public function hitung()
+    {
+        $siswa = Siswa::all();
         $post = Posting::all();
-        $jumlah_user = $user->count();
+        $guru = Guru::all();
+        $absensi = Absensi::all();
+        $jumlah_siswa = $siswa->count();
         $jumlah_post = $post->count();
-    	return view('admin.home', compact('user','jumlah_user','jumlah_post','post'));
+        $jumlah_guru = $guru->count();
+        $jumlah_absen = $absensi->count();
+        return view('admin.home', compact('siswa','jumlah_siswa','jumlah_post','post','guru', 'jumlah_guru','absensi','jumlah_absen'));  
     }
 }

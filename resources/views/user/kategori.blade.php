@@ -2,7 +2,9 @@
 
 @section('title', 'SKABA - Sekolah Khusus Autis Bina Anggita Yogyakarta')
 
-@section('tema', 'Kategori')
+@section('judul')
+Kategori
+@endsection
 
 @section('main-content')
 <!-- blog content -->
@@ -14,52 +16,22 @@
         @foreach ($posts as $post)
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">
+            <h6 class="card-title"><b>
               <a href="{{ route('post', $post->slug) }}">{{ $post->judul }}</a>
-            </h5>
+            </b></h6>
             <p class="card-text">{!! substr($post->konten, 0,200) !!}.</p>
           </div>
           <div class="card-footer text-muted">
             {{ $post->created_at->format('d F Y') }} -
-            @foreach ($post->kategori as $kate) 
+{{--             @foreach ($post->kategori as $kate) 
             <a href="{{ route('kategori', $kate->nama) }}">{{ $kate->nama }}</a>
-            @endforeach
+            @endforeach --}}
+            <a href="{{ route('kategori', $post->kategori->nama) }}">{{ $post->kategori->nama }}</a>
           </div>
         </div>
         @endforeach
       </div>
-
-
-      <div class="col-lg-4">
-          <div class="card my-4">
-            <h5 class="card-header">Kategori</h5>
-            <div class="card-body">
-              <div class="col-lg-12">
-                <ul class="list-unstyled mb-0">
-                  @foreach ($kategori as $kate)
-                    <li>
-                      <a href="{{ route('kategori', $kate->nama) }}">{{ $kate->nama }}</a>
-                    </li>
-                  @endforeach
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="card my-4">
-            <h5 class="card-header">Tag</h5>
-            <div class="card-body">
-              <div class="col-lg-12">
-                <p>
-                @foreach ($tags as $tag)
-                  <a class="btn btn-success" href="{{ route('tag', $tag->nama) }}">{{ $tag->nama }}</a>
-                @endforeach 
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </div>
+      @include('user.layouts.sidebar')
 
     </div><br>
     <!-- /.row -->

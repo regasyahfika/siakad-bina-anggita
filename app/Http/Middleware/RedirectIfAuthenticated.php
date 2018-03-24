@@ -24,6 +24,18 @@ class RedirectIfAuthenticated
                     return redirect()->route('admin.home');
                 }
                 break;
+
+            case 'guru':
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('guru.home');
+                }
+                break;
+
+            case 'walimurid':
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('walimurid.home');
+                }
+                break;
             
             default:
                 if (Auth::guard($guard)->check()) {

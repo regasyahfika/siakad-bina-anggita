@@ -2,7 +2,9 @@
 
 @section('title', 'SKBA - Sekolah Khusus Autis Bina Anggita Yogyakarta')
 
-@section('tema', 'Posts')
+@section('judul')
+{{ $post->judul }}
+@endsection
 
 @section('head')
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -30,44 +32,17 @@
           </div>
           <div class="card-footer text-muted">
             {{ $post->created_at->format('d F Y') }} -
-            @foreach ($post->kategori as $kate) 
+{{--             @foreach ($post->kategori as $kate) 
             <a href="{{ route('kategori', $kate->nama) }}">{{ $kate->nama }}</a>
-            @endforeach
+            @endforeach --}}
+            <a href="{{ route('kategori', $post->kategori->nama) }}">{{ $post->kategori->nama }}</a>
           </div>
         </div>
       </div>
+      
+      @include('user.layouts.sidebar')
 
-
-      <div class="col-lg-4">
-          <div class="card my-4">
-            <h5 class="card-header">Kategori</h5>
-            <div class="card-body">
-	            <div class="col-lg-12">
-	              <ul class="list-unstyled mb-0">
-                  @foreach ($kategori as $kate)
-  	                <li>
-  	                  <a href="{{ route('kategori', $kate->nama) }}">{{ $kate->nama }} <span style="float: right;">{{ $jml }}</span></a>
-                      <hr style="margin-top: 0rem">
-  	                </li>
-                  @endforeach
-	              </ul>
-	            </div>
-            </div>
-          </div>
-
-          <div class="card my-4">
-            <h5 class="card-header">Tag</h5>
-            <div class="card-body">
-              <div class="col-lg-12">
-                <p>
-                @foreach ($tags as $tag)
-                  <a class="btn btn-success" href="{{ route('tag', $tag->nama) }}">{{ $tag->nama }}</a>
-                @endforeach 
-                </p>
-              </div>
-
-            </div>
-          </div>
+     
       </div>
 
     </div><br>

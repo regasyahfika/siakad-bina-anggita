@@ -63,7 +63,7 @@ class Handler extends ExceptionHandler
             switch ($exception->getStatusCode()) 
                 {
                 // not found
-                case 404:
+                case '404':
                 return redirect()->guest('/');
                 break;
 
@@ -101,10 +101,15 @@ class Handler extends ExceptionHandler
             case 'admin':
                 $login = 'admin.login';
                 break;
-            
-            default:
-                $login = 'login';
+            case 'guru':
+                $login = 'guru.login';
                 break;
+            case 'walimurid':
+                $login = 'walimurid.login';
+                break;
+            // default:
+            //     $login = 'login';
+            //     break;
         }
         return redirect()->guest(route($login));
     }

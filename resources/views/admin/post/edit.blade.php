@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Form Posting')
+@section('title', 'Posting')
 
 @section('head')
 <link rel="stylesheet" href="{{ asset('adminlte/bower_components/select2/dist/css/select2.min.css') }}">
@@ -12,14 +12,14 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Form Posting
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">Editors</li>
-      </ol>
+		<h1>
+		Posting
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="{{ route('admin.home') }}"><i class="fa fa-home"></i> Dashboard</a></li>
+			<li><a href="{{ route('post.index') }}">Posting</a></li>
+			<li class="active">Edit</li>
+		</ol>
     </section>
 
     <!-- Main content -->
@@ -33,7 +33,7 @@
 	            <!-- /.box-header -->
 	            @include('includes.messages')
 	            <!-- form start -->
-				<form role="form" action="{{ route('post.update', $post->id) }}" method="post" enctype="multipart/form-data">
+				<form role="form" action="{{ route('post.update', $post->id_posting) }}" method="post" enctype="multipart/form-data">
 	            {{ csrf_field() }}
 	            {{ method_field('PATCH') }}
 	            
@@ -50,47 +50,32 @@
 						      <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ $post->slug }}">
 						    </div>
 
-				            <div class="form-group" style="margin-top: 18px;">
+				            <div class="form-group">
 								<label>Kategori</label>
-								<select class="form-control select2" style="width: 100%;" name="kategori">
+								<select class="form-control select2" style="width: 100%;" name="kategori_id">
 								@foreach($kategori as $kate)
 									{{-- <option selected="selected">Alabama</option> --}}
-									<option value="{{ $kate->id }}"
-									@foreach($post->kategori as $postKate)
-										@if ($postKate->id == $kate->id)
+									<option value="{{ $kate->id_kategori }}"
+										@if ($kate->id_kategori == $post->kategori_id)
 										selected
-										@endif 
-									@endforeach
+										@endif
 									>{{ $kate->nama }}</option>
 								@endforeach
 								</select>
 							</div>
-
-							<div class="form-group" style="margin-top: 18px;">
-				                <label>Select Tag</label>
-				                <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
-				                        style="width: 100%;" name="tag[]">
-				                @foreach ($tags as $tag)
-									<option value="{{ $tag->id }}"
-									@foreach ($post->tags as $postTag)
-										@if ($postTag->id == $tag->id)
-										selected
-										@endif
-									@endforeach
-									>{{ $tag->nama }}</option>
-								@endforeach
-				                </select>
-				            </div>
 						</div>
 
 						<div class="col-lg-6">
-							<br>
-						    <div class="form-group">
-						    	{{-- <div class="pull-right">
-							      <label for="image">Image</label>
-							      <input type="file" name="image" id="image">
-						    	</div> --}}
+						    <div class="form-group" style="margin-top: 23px">
+			                  	<img class="profile-user-img img-responsive img-thumbnail" src="{{ $post->image_url }}" alt="User profile picture" style="margin-bottom: 10px;"><br>
+				                <div class="btn btn-default btn-file">
+				                  	<i class="fa fa-paperclip"></i> Gambar
+				                	<input type="file" name="image" id="image">
+				                </div>
+				                <p class="help-block">Jika tidak ada gambar dapat diabaikan.</p>
+				            </div>
 
+				            <div class="form-group">
 							    <div class="checkbox pull-left">
 							      <label>
 							        <input type="checkbox" name="status" value="1" @if ($post->status == 1) {{'checked'}}
@@ -98,33 +83,7 @@
 							      </label>
 							    </div>
 						    </div>
-						    <br>
-
-							<div class="form-group" style="margin-top: 18px;">
-								<label for="image">Image</label><br>
-								<img src="{{ $post->image_url }}" alt="" style="width: 25%;height: 15%; margin-bottom: 10px;">
-								<input type="file" name="image" id="image">
-
-							</div>
-
-				            {{-- <div class="form-group" style="margin-top: 18px;">
-				                <label>Kategori</label>
-				                <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
-				                        style="width: 100%;" name="kategori[]">
-				                @foreach ($kategori as $kate)
-										<option value="{{ $kate->id }}" 
-									@foreach ($post->kategori as $postKate)
-										@if ($postKate->id == $kate->id)
-										selected
-										@endif
-									@endforeach
-									>{{ $kate->nama }}</option>
-								@endforeach
-				                </select>
-				            </div> --}}
-
 							
-
 						</div>
 					</div>
 					<!-- /.box-body -->
@@ -168,9 +127,13 @@
 @section('footer')
 <script src="{{ asset('adminlte/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
+{{-- <script src="{{ asset('adminlte/bower_components/ckeditor/ckeditor.js') }}"></script> --}}
 
 <script>
 	$(function () {
+	// select data
+	$('.select2').select2()
+	
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
     CKEDITOR.replace('editor1')
@@ -180,9 +143,6 @@
 
 </script>
 <script>
-	$(document).ready(function(){
-		$('.select2').select2()
 		
-	});
 </script>
 @endsection

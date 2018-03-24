@@ -4,7 +4,6 @@
     <div class="row">
       <div class="col-lg-12 text-center">
         <span class="copyright text-muted">&copy; 2017 SKABA - Sekolah Khusus Autis Bina Anggita</span><br>
-
      </div>
     </div>
   </div>

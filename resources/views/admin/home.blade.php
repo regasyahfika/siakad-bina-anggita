@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Larablog | Dashboard')
+@section('title', 'Dashboard')
 
 @section('main-content')
   <!-- Content Wrapper. Contains page content -->
@@ -12,7 +12,7 @@
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
         <li class="active">Dashboard</li>
       </ol>
     </section>
@@ -32,7 +32,7 @@
             <div class="icon">
               <i class="fa fa-book"></i>
             </div>
-            <a href="{{ route('post.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('post.index') }}" class="small-box-footer">Lihat Postingan <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -40,14 +40,29 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>{{ $jumlah_user }}</h3>
+              <h3>{{ $jumlah_siswa }}</h3>
 
-              <p>User Registrasi</p>
+              <p>Siswa</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="fa fa-users"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('siswa.index') }}" class="small-box-footer">Lihat Siswa <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>{{ $jumlah_guru }}</h3>
+
+              <p>Guru</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-graduation-cap"></i>
+            </div>
+            <a href="{{ route('guru.index') }}" class="small-box-footer">Lihat Guru <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -55,14 +70,14 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3>{{ $jumlah_absen }}</h3>
 
-              <p>Comment</p>
+              <p>Absensi</p>
             </div>
             <div class="icon">
-              <i class="fa fa-comments-o"></i>
+              <i class="fa fa-bell"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('absensi.index') }}" class="small-box-footer">Lihat Absensi <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -70,6 +85,36 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
+ {{--  <div class="content">
+    <section class="content">
+      <div class="row">
+        <!-- BAR CHART -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Bar Chart</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="chart">
+                <canvas id="barChart" style="height:230px"></canvas>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+      </div>
+    </section>
+  </div> --}}
   </div>
+
   <!-- /.content-wrapper -->
+@endsection
+
+@section('footer')
 @endsection

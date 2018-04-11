@@ -74,9 +74,9 @@
                     <td>{{ $ulangan->nilai }}</td>
                     <td>{{ date('d-m-Y', strtotime($ulangan->tanggal)) }}</td>
                     <td style="text-align: center;">
-                      <a href="{{ route('ulangan.edit', $ulangan->id_harian) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                      <a href="{{ route('ulangan.edit', $ulangan->id_ulangan) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
 
-                      <form action="{{ route('ulangan.destroy',$ulangan->id_harian) }}" method="post" style="display: inline;" onsubmit="return confirm('Kamu yakin ingin menghapus?')">
+                      <form action="{{ route('ulangan.destroy',$ulangan->id_ulangan) }}" method="post" style="display: inline;" onsubmit="return confirm('Kamu yakin ingin menghapus?')">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <button class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a></button>

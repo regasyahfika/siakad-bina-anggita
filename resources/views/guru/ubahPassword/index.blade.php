@@ -13,8 +13,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('guru.home') }}"><i class="fa fa-home"></i> Dashboard</a></li>
-        <li><a href="{{ route('ubahpassword.index') }}"></a>Ubah Password</li>
-        <li class="active">Tambah</li>
+        <li><a href="{{ route('ubah_password.index') }}"> Ubah Password</a></li>
       </ol>
     </section>
 
@@ -38,7 +37,7 @@
                     </div>
                 @endif
 	            <!-- form start -->
-	            <form class="form-horizontal" method="POST" action="{{ route('changePassword') }}">
+	            <form class="form-horizontal" method="POST" action="{{ route('change_Password') }}">
                         {{ csrf_field() }}
  
                         <div class="form-group{{ $errors->has('password_lama') ? ' has-error' : '' }}">

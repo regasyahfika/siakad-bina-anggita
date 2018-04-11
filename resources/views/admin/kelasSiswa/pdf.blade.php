@@ -16,7 +16,10 @@
     }
     table{
       width: 100%;
-      margin-top: 10px;
+      margin-top: 30px;
+    }
+    h4{
+      padding-top: 20
     }
     .footer{
       font-weight: bold;

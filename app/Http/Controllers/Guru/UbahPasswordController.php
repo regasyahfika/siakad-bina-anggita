@@ -32,12 +32,12 @@ class UbahPasswordController extends Controller
     public function changePassword(Request $request){
  
         if (!(Hash::check($request->get('password_lama'), Auth::user()->password))) {
-            // The passwords matches
+            // kondisi password tidak sama dengan yang lama
             return redirect()->back()->with("error","Password Anda saat ini tidak sesuai dengan password yang Anda berikan. Silakan coba lagi.");
         }
- 
+        // mencocokan sebuah string
         if(strcmp($request->get('password_lama'), $request->get('password_baru')) == 0){
-            //Current password and new password are same
+            //untuk password tidak boleh sama
             return redirect()->back()->with("error","Password baru tidak dapat sama dengan password Anda saat ini. Silakan pilih sandi yang berbeda..");
         }
  
@@ -46,7 +46,7 @@ class UbahPasswordController extends Controller
             'password_baru' => 'required|string|min:6|confirmed',
         ]);
  
-        //Change Password
+        //merubah password
         $user = Auth::user();
         $user->password = bcrypt($request->get('password_baru'));
         $user->save();

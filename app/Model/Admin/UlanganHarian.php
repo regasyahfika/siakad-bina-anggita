@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class UlanganHarian extends Model
 {
-    protected $table = 'ulangan_harian';
+    protected $table = 'ulangan';
 
-    protected $primaryKey = 'id_harian';
+    protected $primaryKey = 'id_ulangan';
 
     protected $fillable = ['siswa_id','kelas_id','guru_id','tahun_id','mapel_id','semester','tanggal','materi','nilai','deskripsi'];
 
@@ -39,6 +39,6 @@ class UlanganHarian extends Model
 
     public function getRouteKeyName()
 	{
-		return 'id_harian';
+		return 'id_ulangan';
 	}
 }

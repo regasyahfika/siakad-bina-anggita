@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Model\Admin\MataPelajaran;
 use App\Model\Admin\Siswa;
 use App\Model\Admin\TahunAkademik;
-use App\Model\Admin\UlanganHarian;
 use App\Model\User\Guru;
 use Illuminate\Http\Request;
 use PDF;

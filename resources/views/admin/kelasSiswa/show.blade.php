@@ -138,7 +138,10 @@
 
 <script>
 $(function () {
-  $('#example1').DataTable()
+  $('#example1').DataTable({
+    'iDisplayLength': 20,
+    'aLengthMenu': [[10, 20, 50, 75, -1], [10, 20, 50, 75, 'All']]
+  })
   $('#example2').DataTable({
     'paging'      : true,
     'lengthChange': false,

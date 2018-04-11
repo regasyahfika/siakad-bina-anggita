@@ -11,8 +11,9 @@ class BeritaController extends Controller
 {
     public function index()
     {
-    	$berita = Posting::where('kategori_id', 2)->where('status', 1)->orderBy('created_at','desc')->paginate(5);
+    	$itemBerita = Kategori::where('nama', 'like', '%'. 'berita' .'%')->first();
+    	$berita = Posting::where('kategori_id', $itemBerita->id_kategori)->where('status', 1)->orderBy('created_at','desc')->paginate(5);
     	$kategori = Kategori::all();
-    	return view('user.berita', compact('berita','kategori'));
+    	return view('user.berita', compact('berita','kategori','itemBerita'));
     }
 }

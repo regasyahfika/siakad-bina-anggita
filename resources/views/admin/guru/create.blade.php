@@ -38,8 +38,8 @@
 					<div class="box-body">
 						<div class="col-md-6">
 			                <div class="form-group">
-			                  <label for="nip">NIP</label>
-			                  <input type="text" class="form-control" id="nip" name="nip" placeholder="Nip" value="{{ old('nip') }}">
+			                  <label for="nip">NIP/NUPTK</label>
+			                  <input type="text" class="form-control" id="nip" name="nip" placeholder="NIP/NUPTK" value="{{ old('nip') }}">
 			                </div>
 
 			                <div class="form-group">
@@ -83,14 +83,14 @@
 								</select>
 							</div>
 
-							<div class="form-group">
-			                  <label for="notelp">No Telp</label>
-			                  <input type="text" class="form-control" id="notelp" name="notelp" placeholder="No Telphone" value="{{ old('notelp') }}">
-			                </div>
-
 			            </div>
 
 			            <div class="col-md-6">
+
+			            	<div class="form-group">
+			                  <label for="notelp">No Telp</label>
+			                  <input type="text" class="form-control" id="notelp" name="notelp" placeholder="No Telphone" value="{{ old('notelp') }}">
+			                </div>
 
 							<div class="form-group">
 								<label>Agama</label>

@@ -66,7 +66,7 @@
                       @endif
                     </td>
                     <td style="text-align: center;">
-                      <a href="{{ route('ulangan.tampil', $dataTahun->id_tahun) }}" class="btn btn-xs btn-primary"><i class="fa fa-plus"></i> Tambah Ulangan Harian</a>
+                      <a href="{{ route('ulangan.tampil', $dataTahun->id_tahun) }}" class="btn btn-xs btn-primary"><i class="fa fa-plus"></i> Tambah Ulangan</a>
 
                       {{-- <a href="{{ route('ruang.edit', $dataRuang->id_ruang) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a> --}}
 

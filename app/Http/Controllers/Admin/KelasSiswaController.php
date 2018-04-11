@@ -90,6 +90,7 @@ class KelasSiswaController extends Controller
         $klsSiswaGuru = KelasSiswaGuru::all();
         $pdf = PDF::loadView('admin.kelasSiswa.pdf', compact('pagi','siang','sore','klsSiswaGuru','dataguru'));
         return $pdf->download('Pembagian Kelas.pdf');
+        // return view('admin.kelasSiswa.pdf', compact('pagi','siang','sore','klsSiswaGuru','dataguru'));
     }
 
     /**

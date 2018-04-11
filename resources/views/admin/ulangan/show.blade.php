@@ -101,9 +101,9 @@
                     <td>{{ $ulangan->nilai }}</td>
                     <td>{{ date('d-m-Y', strtotime($ulangan->tanggal)) }}</td>
                     <td style="text-align: center;">
-                      <a href="{{ route('ulangansiswa.edit', $ulangan->id_harian) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                      <a href="{{ route('ulangansiswa.edit', $ulangan->id_ulangan) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
 
-                      <form action="{{ route('ulangansiswa.destroy',$ulangan->id_harian) }}" method="post" style="display: inline;" onsubmit="return confirm('Kamu yakin ingin menghapus?')">
+                      <form action="{{ route('ulangansiswa.destroy',$ulangan->id_ulangan) }}" method="post" style="display: inline;" onsubmit="return confirm('Kamu yakin ingin menghapus?')">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <button class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a></button>
@@ -134,14 +134,17 @@
 
   <script>
   $(function () {
-    $('#example1').DataTable()
+    $('#example1').DataTable({
+      'iDisplayLength': 20,
+      'aLengthMenu': [[10, 20, 50, 75, -1], [10, 20, 50, 75, 'All']]
+    })
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
       'searching'   : false,
       'ordering'    : true,
       'info'        : true,
-      'autoWidth'   : false
+      'autoWidth'   : false,
     })
   })
 </script>

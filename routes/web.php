@@ -168,7 +168,7 @@ Route::group(['prefix' => 'guru'], function(){
 
 	// Ubah Password
 	Route::get('/ubahpassword','Guru\UbahPasswordController@index')->name('ubah_password.index');
-	Route::post('/ubahpassword','Guru\UbahPasswordController@changePassword')->name('changePassword');
+	Route::post('/ubahpassword','Guru\UbahPasswordController@changePassword')->name('change_Password');
 
 	// -- route absensi --
 	Route::get('/absensi','Guru\AbsensiController@index')->name('absensi_siswa.index');

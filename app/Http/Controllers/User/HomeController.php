@@ -11,9 +11,13 @@ class HomeController extends Controller
 {
 	public function index()
     {
-     //    $artikel = Kategori::find(1)->posts()->where('status',1)->orderBy('created_at','desc')->paginate(5);
-    	$artikel = Posting::where('kategori_id', 1)->where('status', 1)->orderBy('created_at','desc')->paginate(5);
-    	$berita = Posting::where('kategori_id', 2)->where('status', 1)->orderBy('created_at','desc')->paginate(5);
-    	return view('user.blog', compact('artikel', 'berita'));
+        // $artikel = Kategori::find(1)->posts()->where('status',1)->orderBy('created_at','desc')->paginate(5);
+    	// $artikel = Posting::where('kategori_id', 1)->where('status', 1)->orderBy('created_at','desc')->paginate(5);
+    	$itemArtikel = Kategori::where('nama', 'like', '%'. 'artikel' .'%')->first();
+    	$artikel = Posting::where('kategori_id', $itemArtikel->id_kategori)->where('status', 1)->orderBy('created_at','desc')->paginate(5);
+    	$itemBerita = Kategori::where('nama', 'like', '%'. 'berita' .'%')->first();
+    	$berita = Posting::where('kategori_id', $itemBerita->id_kategori)->where('status', 1)->orderBy('created_at','desc')->paginate(5);
+
+    	return view('user.blog', compact('artikel', 'berita','itemArtikel','itemBerita'));
     }
 }

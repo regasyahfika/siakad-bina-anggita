@@ -34,7 +34,7 @@
 	            <!-- /.box-header -->
 	            @include('includes.messages')
 	            <!-- form start -->
-	            <form role="form" action="{{ route('ulangansiswa.update', $ulangan->id_harian) }}" method="post">
+	            <form role="form" action="{{ route('ulangansiswa.update', $ulangan->id_ulangan) }}" method="post">
 	            {{ csrf_field() }}
 	            {{ method_field('PATCH') }}
 	              	<div class="box-body">
@@ -207,11 +207,11 @@
         if (!data.includes('UTS')) {
           $('#tipe').append(new Option('UTS', 'UTS'))
         }
-        else if (!data.includes('UAS')) {
-          $('#tipe').append(new Option('UAS', 'UAS'))
-        }
         else{
 	        $('#tipe').append(new Option('{{ $ulangan->tipe }}', '{{ $ulangan->tipe }}', true, true))
+        }
+        if (!data.includes('UAS')) {
+          $('#tipe').append(new Option('UAS', 'UAS'))
         }
       })
     })

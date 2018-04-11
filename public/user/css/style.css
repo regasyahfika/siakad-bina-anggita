@@ -2,19 +2,19 @@
   font-family: 'Roboto Slab';
   font-weight: 400;
   font-style: normal;
-  src: url(../fonts/RobotoSlab-Regular.ttf) format('truetype');
+  src: url(/fonts/RobotoSlab-Regular.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lora';
   font-weight: 400;
   font-style: normal;
-  src: url(../fonts/Lora-Regular.ttf) format('truetype');
+  src: url(/fonts/Lora-Regular.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lora';
   font-weight: 400;
   font-style: italic;
-  src: url(../fonts/Lora-Italic.ttf) format('truetype');
+  src: url(/fonts/Lora-Italic.ttf) format('truetype');
 }
 
 body{
@@ -48,10 +48,14 @@ a:hover{
 .text-primary{
 	color:#fed136!important
 }
-h1,h2,h3,h4,h5,h6{
+h3,h4,h5,h6{
 	font-weight:500;
 	/*text-align: left;*/
-	font-family: Quicksand,sans-serif
+	font-family: Quicksand,sans-serif;
+}
+
+h1,h2{
+	font-family: Roboto Slab,sans-serif;
 }
 
 section{
